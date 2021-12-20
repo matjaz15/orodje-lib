@@ -1,20 +1,20 @@
 import csv
 
 
-"""--TEST--
-path = "C:/../test.csv"
-search_data_structure = ["Naziv","Cena kosila","Cena večerje","Cena zajtrka","Država/ID","Polna cena","Trajanje do","Trajanje od","Država/Koda države"]
-target_data_structure = ['name','lunch_price','dinner_price','breakfast_price','country_ids','full_price','duration_to','duration_from','country_codes']
-line_key = 'ID'
-result = grab_csv_data(path, line_key, search_data_structure, target_data_structure)
-"""
 def grab_csv_data(path, line_key, search_data_structure, target_data_structure=False):
     """
     path: Absolute file path.
 	line_key: New data line indicator.
 	search_data_structure: Headers to search with.
     target_data_structure: If data given, use index value at current header index from search_data_structure as new key.
-    """
+    
+	--TEST--
+	path = "C:/../test.csv"
+	search_data_structure = ["Naziv","Cena kosila","Cena večerje","Cena zajtrka","Država/ID","Polna cena","Trajanje do","Trajanje od","Država/Koda države"]
+	target_data_structure = ['name','lunch_price','dinner_price','breakfast_price','country_ids','full_price','duration_to','duration_from','country_codes']
+	line_key = 'ID'
+	result = grab_csv_data(path, line_key, search_data_structure, target_data_structure)
+	"""
     file = open(path, "r", encoding='utf-8')
     csv_reader = csv.reader(file, delimiter=',')
     my_list = list(csv_reader)
