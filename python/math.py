@@ -8,14 +8,13 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
     (include_rest) = on zero findings, returns tupple of combination, 
     whose sum is closest to (target)."""
     
-    closest = rest = []  
-    indexrange = [i for i, j in enumerate(nums)]
-    indexlist = list(itertools.combinations(indexrange, steps))
-    permlist = itertools.combinations(nums, steps)
+    closest = rest = []
     limitmax = target + tolerance
     limitmin = target - tolerance
     
     if return_only_indexees:
+        indexrange = [i for i, j in enumerate(nums)]
+        indexlist = list(itertools.combinations(indexrange, steps))
         for i in indexlist:
             tup = ()
             for l in i:
@@ -31,6 +30,7 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
             if limitmin <= tup_sum <= limitmax:
                 closest.append(var)
     else:
+        permlist = itertools.combinations(nums, steps)
         for i in permlist:
             tup_sum = sum(i)
             if tup_sum == target:
@@ -51,9 +51,3 @@ def chunks(lst, n):
     
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
-        
-
-        
-nums = [5,10,5,6,3,7,12,32,16,74] 
-test = subsetsum(nums,9,1,0, True, True)
-print(test)
