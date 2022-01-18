@@ -11,6 +11,8 @@ def merge_and_sum_by_id(data, unique_id_name, sum_key_names):
     {'my_id': 1, 'name': 'test', 'num1': 8, 'num2': 15}
     {'my_id': 6, 'name': 'test4', 'num1': 4, 'num2': 5}
     """
+
+    data = sorted(data, key = lambda i: (i[unique_id_name]))
     
     new_data = []
     current_id = None
@@ -33,17 +35,3 @@ def merge_and_sum_by_id(data, unique_id_name, sum_key_names):
 
     new_data.append(tmp)
     return new_data
-
-
-test_data = [
-    {'my_id': 1, 'name': 'test', 'num1': 5, 'num2': 10},
-    {'my_id': 1, 'name': 'test2', 'num1': 2, 'num2': 3},
-    {'my_id': 1, 'name': 'test3', 'num1': 1, 'num2': 2},
-    {'my_id': 6, 'name': 'test4', 'num1': 4, 'num2': 5}
-]
-
-result = merge_and_sum_by_id(test_data, 'my_id', ['num1', 'num2'])
-print("\n\n++++++++RESULTS++++++++")
-for line in result:
-    print(line)
-    
