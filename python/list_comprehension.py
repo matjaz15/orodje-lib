@@ -1,5 +1,5 @@
 def merge_and_sum_by_id(data, unique_id_name, sum_key_names):
-    """Given array of objects, merge objects with the same unique_id_name into single objects
+    """Given an array of objects, merge objects with the same unique_id_name into single objects
     and sum fields with sum_key_names. Non sum_key_names fields are taken from first merged object.
     BEFORE:
     {'my_id': 1, 'name': 'test', 'num1': 5, 'num2': 10}
