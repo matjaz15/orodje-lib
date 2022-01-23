@@ -9,6 +9,8 @@ def read_csv_to_table(path, header_list=[], delimiter=',', encoding='utf-8') -> 
     :param list header_list: List of strings, representing column names. Use if CSV has no headers
     :param str delimiter: CSV delimiter.
     :param str encoding: CSV encoding.
+    :return: table-like list data.
+    :rtype: list
     """
 
     file = open(path, "r", encoding=encoding)

@@ -45,6 +45,8 @@ def table_to_object(table_list, new_line_key, search_data_list, target_data_list
     :param str new_line_key: New data line indicator.
     :param list search_data_list: Headers to search with.
     :param list target_data_list: Replace search_data_list with target_data_list. Indexees must match search data.
+    :return: structured object list data.
+    :rtype: list
     """
 
     current_line = -1

@@ -12,6 +12,8 @@ def grab_csv_data(path, new_line_key, search_data_list, target_data_list=[], hea
     :param list header_list: List of strings, representing column names. Warning: use only if CSV has no headers.
     :param str delimiter: CSV delimiter.
     :param str encoding: CSV encoding.
+    :return: structured object list data.
+    :rtype: list
     """
 
     table_list_data = read_csv_to_table(
