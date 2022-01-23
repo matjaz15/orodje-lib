@@ -1,4 +1,4 @@
-import itertools
+from itertools import combinations
 
 
 def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, include_rest=False):
@@ -14,7 +14,7 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
     
     if return_only_indexees:
         indexrange = [i for i, j in enumerate(nums)]
-        indexlist = list(itertools.combinations(indexrange, steps))
+        indexlist = list(combinations(indexrange, steps))
         for i in indexlist:
             tup = ()
             for l in i:
@@ -30,7 +30,7 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
             if limitmin <= tup_sum <= limitmax:
                 closest.append(var)
     else:
-        permlist = itertools.combinations(nums, steps)
+        permlist = combinations(nums, steps)
         for i in permlist:
             tup_sum = sum(i)
             if tup_sum == target:
