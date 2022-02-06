@@ -1,15 +1,13 @@
-def merge_and_sum_by_id(data, unique_id_name, sum_key_names):
-    """Given an array of objects, merge objects with the same unique_id_name into single objects
-    and sum fields with sum_key_names. Non sum_key_names fields are taken from first merged object.
-    BEFORE:
-    {'my_id': 1, 'name': 'test', 'num1': 5, 'num2': 10}
-    {'my_id': 1, 'name': 'test2', 'num1': 2, 'num2': 3}
-    {'my_id': 1, 'name': 'test3', 'num1': 1, 'num2': 2}
-    {'my_id': 6, 'name': 'test4', 'num1': 4, 'num2': 5}
-    merge_and_sum_by_id(data, 'my_id', ['num1', 'num2'])
-    AFTER:
-    {'my_id': 1, 'name': 'test', 'num1': 8, 'num2': 15}
-    {'my_id': 6, 'name': 'test4', 'num1': 4, 'num2': 5}
+def merge_and_sum_by_id(data, unique_id_name, sum_key_names=[]) -> list:
+    """
+    Merge objects with the same unique_id_name into single objects. Data is 
+    taken from first merged object. if sum_key_names is give, also do a sum.
+
+    :param list data: List of dictionaries.
+    :param str unique_id_name: Merge dictionaries by this key name.
+    :param list sum_key_names: Dictionaries with these keys will be summed.
+    :return: List with dictionary-unique-key data.
+    :rtype: list
     """
 
     data = sorted(data, key = lambda i: (i[unique_id_name]))
