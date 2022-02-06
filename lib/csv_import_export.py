@@ -1,5 +1,5 @@
-from files import read_csv_to_table
-from lists import table_to_object
+from src.files import read_csv_to_table
+from src.lists import table_to_object
 
 def grab_csv_data(path, new_line_key, search_data_list, target_data_list=[], header_list=[], delimiter=',', encoding='utf-8') -> list:
     """
