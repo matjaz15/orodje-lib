@@ -1,2 +1,2 @@
 # orodje-lib
-My code library of common problem.
+My python library. 
