@@ -15,9 +15,9 @@ class CSVTest(unittest.TestCase):
         self.csv_encoding = 'utf-8'
         self.csv_delimiter = ','
         self.new_line_key = 'ID'
+        self.header_list = ['ID','Product Name','Contact Name','Group ids']
         self.search_data_list = ['Product Name','Contact Name','Group ids']
         self.target_data_list = ['product_name','contact_name','group_ids']
-        self.header_list = ['ID','Product Name','Contact Name','Group ids']
 
         self.expected_data = [
             {'Product Name': 'Eldon Base for stackable storage shelf, platinum', 'Contact Name': 'Muhammed MacIntyre', 'Group ids': ['1', '3', '4']},

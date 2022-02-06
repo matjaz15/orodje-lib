@@ -39,9 +39,9 @@ def merge_and_sum_by_id(data, unique_id_name, sum_key_names):
 
 def table_to_object(table_list, new_line_key, search_data_list, target_data_list=False) -> list:
     """
-    Convert table-like list data (ex. from a csv file) into structured object list data.
+    Convert table-like list data (ex. from a csv file) into object list data.
 
-    :param list table_list: List of lists where fist list MUST have column names as string.
+    :param list table_list: List of lists where fist list MUST have column names / headers as string.
     :param str new_line_key: New data line indicator.
     :param list search_data_list: Headers to search with.
     :param list target_data_list: Replace search_data_list with target_data_list. Indexees must match search data.
@@ -55,11 +55,13 @@ def table_to_object(table_list, new_line_key, search_data_list, target_data_list
     has_data = False
 
     for i in range(1, len(table_list)):
-        # TODO: Preveri dolžino vrstic. Če je index stolpca višji od max indexa stolpcov v glavi, odreži
-        # To pomeni, da prilagodiš podatke glede na glavo. 
-        # Če je število stolpcov v vrstici manjše od število stolpcov v glavi, zapolni s False.
-
-        row = {table_list[0][j]: col for j, col in enumerate(table_list[i])}
+        
+        # Make sure that the number of row elements is the same as the number of columns.
+        # You can't have more row elements than there are column elements.
+        headers = table_list[0]
+        items = table_list[i]
+        row = {headers[j]: col for j, col in enumerate(items[:len(headers)])}
+        
         
         if row[new_line_key] and current_line != row[new_line_key]:
             if int(current_line) >= 0:
