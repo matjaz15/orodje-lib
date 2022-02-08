@@ -34,9 +34,14 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
             closest.append(var)
     return min(closest)[1] if closest else min(rest)[1] if include_rest else ()
     
-def chunks(lst, n):
-    """Explode list (lst) into smaller sub-lists where (n) is the max
-    amount of elements in a sub-list."""
+def chunks(lst, n): 
+    """
+    Explode list into smaller chunks.
+
+    :param list lst: List to explode.
+    :param int n: Max amount of elements in a sub-object.
+    :return: Sliced generator object.
+    """
     
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
