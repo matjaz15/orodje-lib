@@ -18,8 +18,9 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
     closest = []
     rest = []
     limitmax = target + tolerance
-    limitmin = target - tolerance    
-    indexrange = [i for i, j in enumerate(nums)] if return_only_indexees else nums
+    limitmin = target - tolerance
+    
+    indexrange = range(0, len(nums)) if return_only_indexees else nums
     for i in combinations(indexrange, steps):        
         tup = (nums[l] for l in i) if return_only_indexees else i
         tup_sum = sum(tup)
@@ -34,7 +35,7 @@ def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, incl
             closest.append(var)
     return min(closest)[1] if closest else min(rest)[1] if include_rest else ()
     
-def chunks(lst, n): 
+def chunks(lst, n):
     """
     Explode list into smaller chunks.
 
