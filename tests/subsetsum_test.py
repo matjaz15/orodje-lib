@@ -9,6 +9,7 @@ cwd = os.getcwd()
 
 from src.math import subsetsum
 
+
 class SubsetsumTest(unittest.TestCase):
     def setUp(self):
         self.nums = [1,5,3,62,1,2,88,0,56]      
@@ -287,7 +288,7 @@ class SubsetsumPerformanceTest(unittest.TestCase):
         self.assertNotEqual((),result)      
         self.assertLessEqual(end_time, self.time_limit2)
 
-    def test_performance_150_numbers_7_step_under_0_0000001sec(self):
+    def test_performance_150_numbers_7_step_under_0_03sec(self):
         start_time = time.time()        
         result = subsetsum(
             nums=self.nums_150,
