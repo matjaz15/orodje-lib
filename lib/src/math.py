@@ -1,49 +1,38 @@
 from itertools import combinations
 
 
-def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, include_rest=False):
-    """Returns tupple with (steps) amount of values from list (nums), 
-    whose sum is closest to (target) and falls in the (tolerance) +- field.
-    (return_only_indexees) = returns tupple of indexees instead of values.
-    (include_rest) = on zero findings, returns tupple of combination, 
-    whose sum is closest to (target)."""
-    
-    closest = rest = []
+def subsetsum(nums, target, steps, tolerance=0, return_only_indexees=False, include_rest=False) -> tuple:
+    """
+    Finds number combinations, whose sum is equal (or close) to desired value. 
+
+    :param list nums: List of integers and floats.
+    :param float target: Target sum-combination.
+    :param int steps: Amount of combinations returned.
+    :param float tolerance: Threshold of allowed candidates. Smaller values give more accurate results.
+    :param bool return_only_indexees: Returns tupple of indexees instead of values.
+    :param bool include_rest: On zero findings, returns the CLOESET sum-combination to (target). Ignores tolerance.
+    :return: Tupple with (steps) amount of values whose sum falls in the (tolerance) +- field.
+    :rtype: tuple
+    """
+
+    closest = []
+    rest = []
     limitmax = target + tolerance
-    limitmin = target - tolerance
-    
-    if return_only_indexees:
-        indexrange = [i for i, j in enumerate(nums)]
-        indexlist = list(combinations(indexrange, steps))
-        for i in indexlist:
-            tup = ()
-            for l in i:
-                tup = tup + (nums[l],)
-                
-            tup_sum = sum(tup)
-            if tup_sum == target:
-                return i
+    limitmin = target - tolerance    
+    indexrange = [i for i, j in enumerate(nums)] if return_only_indexees else nums
+    for i in combinations(indexrange, steps):        
+        tup = (nums[l] for l in i) if return_only_indexees else i
+        tup_sum = sum(tup)
+        if tup_sum == target:
+            return i
 
-            var = (abs(tup_sum - target), i)
-            if include_rest:
-                rest.append(var)
-            if limitmin <= tup_sum <= limitmax:
-                closest.append(var)
-    else:
-        permlist = combinations(nums, steps)
-        for i in permlist:
-            tup_sum = sum(i)
-            if tup_sum == target:
-                return i
-
-            var = (abs(tup_sum - target), i)
-            if include_rest:
-                rest.append(var)
-            if limitmin <= tup_sum <= limitmax:
-                closest.append(var)
-
+        var = (abs(tup_sum - target), i)
+        if include_rest:
+            rest.append(var)
+            continue
+        if limitmin <= tup_sum <= limitmax:
+            closest.append(var)
     return min(closest)[1] if closest else min(rest)[1] if include_rest else ()
-    
     
 def chunks(lst, n):
     """Explode list (lst) into smaller sub-lists where (n) is the max
