@@ -94,7 +94,7 @@ class SubsetsumTest(unittest.TestCase):
 
 class SubsetsumTestWithFloats(unittest.TestCase):
     def setUp(self):
-        self.nums = [10.23,66.12,5.11,48.44,51.22,1.1]
+        self.nums = [10.23, 66.12, 5.11, 48.44, 51.22, 1.1]
         self.tolerance = 6
 
     # --1 step tests--
