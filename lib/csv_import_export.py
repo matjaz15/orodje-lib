@@ -8,7 +8,7 @@ def grab_csv_data(path, new_line_key, search_data_list, target_data_list=[], hea
     :param str path: Absoulute file path.
     :param str new_line_key: New data line indicator.
     :param list search_data_list: Headers to search with.
-    :param list target_data_list: Replace search_data_list with target_data_list. Indexees must match search data.
+    :param list target_data_list: Replaces search_data_list field names with target_data_list (indexees must match search_data_list).
     :param list header_list: List of strings, representing column names. Warning: use only if CSV has no headers.
     :param str delimiter: CSV delimiter.
     :param str encoding: CSV encoding.
