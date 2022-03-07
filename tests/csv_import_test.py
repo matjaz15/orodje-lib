@@ -4,7 +4,7 @@ import sys
 sys.path.append('../lib')
 cwd = os.getcwd()
 
-from csv_import_export import grab_csv_data
+from csv_import_export import import_csv_data
 
 
 class CSVTest(unittest.TestCase):
@@ -32,8 +32,8 @@ class CSVTest(unittest.TestCase):
             {'product_name': 'R380', 'contact_name': 'Clay Rozendal', 'group_ids': '483'}
         ]
 
-    def test_grab_csv_data_with_header(self):
-        result = grab_csv_data(
+    def test_import_csv_data_with_header(self):
+        result = import_csv_data(
             path=self.path_with_header,
             new_line_key=self.new_line_key,
             search_data_list=self.search_data_list,
@@ -42,8 +42,8 @@ class CSVTest(unittest.TestCase):
         )
         self.assertListEqual(self.expected_data, result)
 
-    def test_grab_csv_data_with_header_and_with_target_data_list(self):
-        result = grab_csv_data(
+    def test_import_csv_data_with_header_and_with_target_data_list(self):
+        result = import_csv_data(
             path=self.path_with_header,
             new_line_key=self.new_line_key,
             search_data_list=self.search_data_list,
@@ -53,8 +53,8 @@ class CSVTest(unittest.TestCase):
         )
         self.assertListEqual(self.expected_with_target_data_list, result)
     
-    def test_grab_csv_data_without_header(self):
-        result = grab_csv_data(
+    def test_import_csv_data_without_header(self):
+        result = import_csv_data(
             path=self.path_without_header,
             new_line_key=self.new_line_key,
             search_data_list=self.search_data_list,
@@ -64,8 +64,8 @@ class CSVTest(unittest.TestCase):
         )
         self.assertListEqual(self.expected_data, result)
 
-    def test_grab_csv_data_without_header_and_with_target_data_list(self):
-        result = grab_csv_data(
+    def test_import_csv_data_without_header_and_with_target_data_list(self):
+        result = import_csv_data(
             path=self.path_without_header,
             new_line_key=self.new_line_key,
             search_data_list=self.search_data_list,

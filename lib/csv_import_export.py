@@ -1,7 +1,7 @@
 from src.files import read_csv_to_table
 from src.lists import table_to_object
 
-def grab_csv_data(path, new_line_key, search_data_list, target_data_list=[], header_list=[], delimiter=',', encoding='utf-8') -> list:
+def import_csv_data(path, new_line_key, search_data_list, target_data_list=[], header_list=[], delimiter=',', encoding='utf-8') -> list:
     """
     Convert CSV data into object data.
 
@@ -30,3 +30,5 @@ def grab_csv_data(path, new_line_key, search_data_list, target_data_list=[], hea
     )
     return object_data
 
+def write_csv_data(file_name, path, object_data_list):
+    return True
