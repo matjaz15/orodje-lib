@@ -30,5 +30,5 @@ def import_csv_data(path, new_line_key, search_data_list, target_data_list=[], h
     )
     return object_data
 
-def write_csv_data(file_name, path, object_data_list):
+def export_csv_data(file_name, path, object_data_list):
     return True

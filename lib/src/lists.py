@@ -1,3 +1,5 @@
+import json
+
 def merge_and_sum_by_id(data, unique_id_name, sum_key_names=[]) -> list:
     """
     Merge objects with the same unique_id_name into single objects. Data is 
@@ -92,5 +94,59 @@ def table_to_object(table_list, new_line_key, search_data_list, target_data_list
 
     # Append the last line
     data.append(vals)
+    return data
+
+
+def object_to_table(object_list) -> list:
+    """
+    Convert object list data (ex. json) into table-like data.
+
+    :param list object_list: Array of objects (like json).
+    :return: table-like data where first element contains headers.
+    :rtype: list
+    """
+
+    # Get headers
+    headers = []
+    for key  in object_list[0].keys():
+        if key not in headers:
+            headers.append(key)
+
+    # Get data
+    data = [headers]
+    for line in object_list:
+        vals = []
+        subs = []
+        index = 0
+
+        for key, item in line.items():
+            # False values must be ''
+            if item == False:
+                item = ''
+    
+            # Handles array values (like ids)
+            if item.__class__ == list:
+                for sub in item[1:]:
+                    # Generate rows with empty
+                    # values for each array element
+                    empties = []
+                    for j in line:
+                        empties.append('')
+
+                    # Assign array element at current index to empties
+                    empties[index] = sub
+                    subs.append(empties)
+
+                # Write first element of array at current index 
+                vals.append(item[0])
+            else:
+                vals.append(item)
+
+            index += 1
+        data.append(vals)
+        
+        # Append all array element rows to data
+        for sub in subs:
+            data.append(sub)
 
     return data
