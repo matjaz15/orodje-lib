@@ -4,7 +4,7 @@ import sys
 sys.path.append('../lib')
 cwd = os.getcwd()
 
-from csv_import_export import write_csv_data
+from csv_import_export import export_csv_data
 
 
 class CSVImportTest(unittest.TestCase):
@@ -21,7 +21,7 @@ class CSVImportTest(unittest.TestCase):
         
 
     def test_object_to_csv(self):
-        result = write_csv_data(
+        result = export_csv_data(
             file_name = self.file_name,
             path = self.path,
             object_data_list = self.object_test_data
