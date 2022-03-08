@@ -152,6 +152,4 @@ def object_to_table(object_list) -> list:
         # Append all array element rows to data
         for sub in subs:
             data.append(sub)
-    for line in data:
-        print(line)
     return data
