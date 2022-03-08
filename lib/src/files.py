@@ -1,5 +1,5 @@
 from csv import reader, writer
-
+from xlrd import open_workbook
 
 def read_csv_to_table(path, header_list=[], delimiter=',', encoding='utf-8') -> list:
     """
@@ -37,3 +37,16 @@ def write_csv_to_table(path, data_list, delimiter=',', encoding='utf-8', newline
     for row in data_list:
         csv_writer.writerow(row)
     file.close()
+
+def read_xls_to_table(path) -> list:
+    """
+    Read XLS data into a table-like list.
+
+    :param str path: Absoulute file path.
+    :return: table-like list data.
+    :rtype: list
+    """
+
+    book = open_workbook(path)
+    sheet = book.sheet_by_index(0)
+    return [[c.value for c in sheet.row(n)] for n in range(0, sheet.nrows)]
