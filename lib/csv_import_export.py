@@ -1,9 +1,9 @@
-from src.files import read_csv_to_table
-from src.lists import table_to_object
+from src.files import read_csv_to_table, write_csv_to_table
+from src.lists import table_to_object, object_to_table
 
 def import_csv_data(path, new_line_key, search_data_list, target_data_list=[], header_list=[], delimiter=',', encoding='utf-8') -> list:
     """
-    Convert CSV data into object data.
+    Import CSV data into object data.
 
     :param str path: Absoulute file path.
     :param str new_line_key: New data line indicator.
@@ -30,5 +30,21 @@ def import_csv_data(path, new_line_key, search_data_list, target_data_list=[], h
     )
     return object_data
 
-def export_csv_data(file_name, path, object_data_list):
+def export_csv_data(path, object_data_list, delimiter=',', encoding='utf-8') -> None:
+    """
+    Export object data into a CSV file.
+
+    :param str path: Absoulute file path with name and mime type.
+    :param list object_data_list: Data list to export.
+    :param str delimiter: CSV delimiter.
+    :param str encoding: CSV encoding.
+    :rtype: None
+    """
+    table_list_data = object_to_table(
+        object_list = object_data_list
+    )
+    write_csv_to_table(
+        path=path,
+        data_list=table_list_data
+    )
     return True

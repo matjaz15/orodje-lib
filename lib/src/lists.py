@@ -126,7 +126,7 @@ def object_to_table(object_list) -> list:
     
             # Handles array values (like ids)
             if item.__class__ == list:
-                for sub in item[1:]:
+                for i, sub in enumerate(item[1:]):                        
                     # Generate rows with empty
                     # values for each array element
                     empties = []
@@ -134,8 +134,12 @@ def object_to_table(object_list) -> list:
                         empties.append('')
 
                     # Assign array element at current index to empties
-                    empties[index] = sub
-                    subs.append(empties)
+                    if i < len(subs):
+                        #print(subs[i])
+                        pass
+                    else:
+                        empties[index] = sub
+                        subs.append(empties)
 
                 # Write first element of array at current index 
                 vals.append(item[0])
@@ -148,5 +152,6 @@ def object_to_table(object_list) -> list:
         # Append all array element rows to data
         for sub in subs:
             data.append(sub)
-
+    for line in data:
+        print(line)
     return data

@@ -1,4 +1,4 @@
-from csv import reader
+from csv import reader, writer
 
 
 def read_csv_to_table(path, header_list=[], delimiter=',', encoding='utf-8') -> list:
@@ -20,3 +20,20 @@ def read_csv_to_table(path, header_list=[], delimiter=',', encoding='utf-8') -> 
     if header_list:
         my_list.insert(0, header_list)
     return my_list
+
+def write_csv_to_table(path, data_list, delimiter=',', encoding='utf-8', newline='') -> None:
+    """
+    Write table data into a CSV file.
+
+    :param str path: Absoulute file path.
+    :param list data_list: Data to write in the CSV file.
+    :param str delimiter: CSV delimiter.
+    :param str encoding: CSV encoding.
+    :rtype: None
+    """
+
+    file = open(path, "w", encoding=encoding, newline=newline)
+    csv_writer = writer(file, delimiter=delimiter)
+    for row in data_list:
+        csv_writer.writerow(row)
+    file.close()
